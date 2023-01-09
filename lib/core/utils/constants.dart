@@ -5,6 +5,11 @@ const Color evenCompartmentColor = Colors.blueGrey;
 const Color selectedSeatColor = Colors.green;
 const Color notSelectedSeatColor = Colors.white;
 
+enum Side{
+  up,
+  down
+}
+
 Map<int,String> birthType= {
   0: "SU",
   1: "Lower",

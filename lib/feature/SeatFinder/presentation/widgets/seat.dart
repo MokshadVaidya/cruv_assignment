@@ -6,10 +6,11 @@ import 'package:seat_finder_cruv/core/utils/constants.dart';
 import 'package:seat_finder_cruv/feature/SeatFinder/presentation/cubit/seat_finder_cubit.dart';
 
 class Seat extends StatelessWidget {
-  const Seat({Key? key, required this.seatNo, required this.compartmentNumber})
+  const Seat({Key? key, required this.seatNo, required this.compartmentNumber,required this.side})
       : super(key: key);
   final int seatNo;
   final int compartmentNumber;
+  final Side side;
   @override
   Widget build(BuildContext context) {
         return Container(
@@ -22,7 +23,7 @@ class Seat extends StatelessWidget {
           height: 50.h,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [Text(seatNo.toString()), Text(birthType[seatNo % 8]!)],
+            children: side==Side.up?[Text(seatNo.toString()), Text(birthType[seatNo % 8]!)]:[Text(birthType[seatNo % 8]!),Text(seatNo.toString())],
           ),
         );
   }

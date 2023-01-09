@@ -33,11 +33,9 @@ class _MyHomePageState extends State<MyHomePage> {
     return GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
         body: Column(
           children: [
+            Container(child: Text(widget.title),),
             Container(
               margin: EdgeInsets.all(16.sp),
               padding: EdgeInsets.symmetric(vertical: 5.h),

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:seat_finder_cruv/core/utils/constants.dart';
 import 'package:seat_finder_cruv/feature/SeatFinder/presentation/widgets/seat.dart';
 
 class CompartmentRow extends StatelessWidget {
   const CompartmentRow(
-      {Key? key, required this.startNumber, required this.compartmentNumber})
+      {Key? key, required this.startNumber, required this.compartmentNumber,required this.side})
       : super(key: key);
   final int startNumber;
   final int compartmentNumber;
+  final Side side;
   List<Widget> getSeats() {
     List<Widget> seats = [];
     for (int i = 0; i < 5; i++) {
@@ -18,11 +20,13 @@ class CompartmentRow extends StatelessWidget {
           wid = Seat(
             seatNo: startNumber % 2 == 0 ? startNumber + 4 : startNumber + 6,
             compartmentNumber: compartmentNumber,
+            side: side,
           );
         } else {
           wid = Seat(
             seatNo: startNumber + i,
             compartmentNumber: compartmentNumber,
+            side: side,
           );
         }
       }

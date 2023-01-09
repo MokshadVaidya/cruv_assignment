@@ -35,11 +35,13 @@ class Compartment extends StatelessWidget {
               CompartmentRow(
                 startNumber: (compartmentNumber * 8) + 1,
                 compartmentNumber: compartmentNumber,
+                side: Side.up,
               ),
               Spacer(),
               CompartmentRow(
                 startNumber: (compartmentNumber * 8) + 4,
                 compartmentNumber: compartmentNumber,
+                side: Side.down,
               )
             ],
           ),
