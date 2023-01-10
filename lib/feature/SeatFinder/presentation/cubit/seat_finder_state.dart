@@ -4,5 +4,5 @@ part of 'seat_finder_cubit.dart';
 abstract class SeatFinderState {}
 
 class SeatFinderInitial extends SeatFinderState {}
-class SeatsSelected extends SeatFinderState {
-}
+class SeatsSelected extends SeatFinderState {}
+

@@ -14,11 +14,14 @@ class Seat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
         return Container(
-          margin: EdgeInsets.only(right: 5.w),
-          color:
-              (BlocProvider.of<SeatFinderCubit>(context).seatNumber == seatNo)
-                  ? selectedSeatColor
-                  : notSelectedSeatColor,
+          margin: EdgeInsets.only(left: 3.w),
+          decoration: BoxDecoration(
+            color:
+            (BlocProvider.of<SeatFinderCubit>(context).seatNumber == seatNo)
+                ? selectedSeatColor
+                : notSelectedSeatColor,
+            borderRadius: BorderRadius.circular(5.r),
+          ),
           width: 50.w,
           height: 50.h,
           child: Column(
