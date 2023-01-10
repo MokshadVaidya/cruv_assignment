@@ -22,6 +22,11 @@ class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController _seatController = TextEditingController();
   final ValueNotifier<int> number = ValueNotifier(0);
 
+  void resetNumber(){
+    print("object");
+    number.value = 0;
+  }
+
   List<Widget> getCompartments(int numberOfCompartments) {
     List<Widget> compartments = [];
     for (int i = 0; i < numberOfCompartments; i++) {
@@ -32,11 +37,14 @@ class _MyHomePageState extends State<MyHomePage> {
           if (state is SeatsSelected) {
             selectedCompartment =
                 BlocProvider.of<SeatFinderCubit>(context).compartmentNumber;
-            previousSelectedCompartment = BlocProvider.of<SeatFinderCubit>(context).previousCompartmentNumber;
+            previousSelectedCompartment =
+                BlocProvider.of<SeatFinderCubit>(context)
+                    .previousCompartmentNumber;
           }
         },
         buildWhen: (previousState, state) {
-          return ((state is SeatsSelected) && ((i == selectedCompartment)||i==previousSelectedCompartment));
+          return ((state is SeatsSelected) &&
+              ((i == selectedCompartment) || i == previousSelectedCompartment));
         },
         builder: (context, state) {
           return Compartment(compartmentNumber: i);
@@ -71,26 +79,34 @@ class _MyHomePageState extends State<MyHomePage> {
                       padding: EdgeInsets.zero,
                       placeholder: "Enter Seat Number",
                       decoration: BoxDecoration(
-                          border: Border.all(width: 2.w,color: textFieldBorderColor),
-                          borderRadius: BorderRadius.circular(textFieldBorderRadius.r)),
+                          border: Border.all(
+                              width: 2.w, color: textFieldBorderColor),
+                          borderRadius:
+                              BorderRadius.circular(textFieldBorderRadius.r)),
                       onChanged: (value) {
-                        if (value.isEmpty) {
-                          number.value = 0;
-                        } else {
+                        if (value.isNotEmpty) {
                           number.value = int.parse(value);
+                        } else {
+                          resetNumber();
                         }
                       },
                       keyboardType: const TextInputType.numberWithOptions(),
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       validator: (value) {
-                        if (value!.isEmpty ||
-                            int.parse(value) > maxSeats ||
-                            int.parse(value) < 1) {
-                          if (value.isEmpty) {
-                          } else {
-                            return 'Error';
+                        try{
+                          if (value!.isEmpty ||
+                              int.parse(value) > maxSeats ||
+                              int.parse(value) < 1) {
+                            if (value.isEmpty){}
+                            else {
+                              return 'Please enter a value between 1 and 72';
+                            }
                           }
+                        }catch(e){
+                          resetNumber();
+                          return "Enter Valid Number";
                         }
+                        return null;
                       },
                     ),
                   ),
@@ -119,5 +135,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-
