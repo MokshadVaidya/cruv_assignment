@@ -18,11 +18,11 @@ enum Side{
 
 Map<int,String> birthType= {
   0: "SU",
-  1: "Lower",
-  2: "Middle",
-  3: "Upper",
-  4: "Lower",
-  5: "Middle",
-  6: "Upper",
+  1: "L",
+  2: "M",
+  3: "U",
+  4: "L",
+  5: "M",
+  6: "U",
   7: "SL"
 };
