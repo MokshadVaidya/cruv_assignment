@@ -103,7 +103,6 @@ class _MyHomePageState extends State<MyHomePage> {
                             }
                           }
                         }catch(e){
-                          resetNumber();
                           return "Enter Valid Number";
                         }
                         return null;
