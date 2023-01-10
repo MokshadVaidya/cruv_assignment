@@ -88,6 +88,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           number.value = int.parse(value);
                         } else {
                           resetNumber();
+                          BlocProvider.of<SeatFinderCubit>(
+                              context)
+                              .selectSeats(-1);
                         }
                       },
                       keyboardType: const TextInputType.numberWithOptions(),
