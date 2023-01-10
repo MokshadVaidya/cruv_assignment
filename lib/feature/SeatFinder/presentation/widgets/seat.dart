@@ -26,7 +26,7 @@ class Seat extends StatelessWidget {
           height: 50.h,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: side==Side.up?[Text(seatNo.toString()), Text(birthType[seatNo % 8]!)]:[Text(birthType[seatNo % 8]!),Text(seatNo.toString())],
+            children: side==Side.up?[Text(seatNo.toString(),style: TextStyle(fontSize: 15.sp),), Text(birthType[seatNo % 8]!,style: TextStyle(fontSize: 15.sp))]:[Text(birthType[seatNo % 8]!,style: TextStyle(fontSize: 15.sp)),Text(seatNo.toString(),style: TextStyle(fontSize: 15.sp))],
           ),
         );
   }

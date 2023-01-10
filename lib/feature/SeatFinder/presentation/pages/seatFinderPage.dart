@@ -66,35 +66,32 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   Expanded(
                     flex: 3,
-                    child: SizedBox(
-                      // height: 100,
-                      child: CupertinoTextFormFieldRow(
-                        controller: _seatController,
-                        padding: EdgeInsets.zero,
-                        placeholder: "Enter Seat Number",
-                        decoration: BoxDecoration(
-                            border: Border.all(width: 2.w,color: textFieldBorderColor),
-                            borderRadius: BorderRadius.circular(textFieldBorderRadius.r)),
-                        onChanged: (value) {
+                    child: CupertinoTextFormFieldRow(
+                      controller: _seatController,
+                      padding: EdgeInsets.zero,
+                      placeholder: "Enter Seat Number",
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 2.w,color: textFieldBorderColor),
+                          borderRadius: BorderRadius.circular(textFieldBorderRadius.r)),
+                      onChanged: (value) {
+                        if (value.isEmpty) {
+                          number.value = 0;
+                        } else {
+                          number.value = int.parse(value);
+                        }
+                      },
+                      keyboardType: const TextInputType.numberWithOptions(),
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      validator: (value) {
+                        if (value!.isEmpty ||
+                            int.parse(value) > maxSeats ||
+                            int.parse(value) < 1) {
                           if (value.isEmpty) {
-                            number.value = 0;
                           } else {
-                            number.value = int.parse(value);
+                            return 'Error';
                           }
-                        },
-                        keyboardType: const TextInputType.numberWithOptions(),
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        validator: (value) {
-                          if (value!.isEmpty ||
-                              int.parse(value) > maxSeats ||
-                              int.parse(value) < 1) {
-                            if (value.isEmpty) {
-                            } else {
-                              return 'Please enter a value between 1 and 72';
-                            }
-                          }
-                        },
-                      ),
+                        }
+                      },
                     ),
                   ),
                   Expanded(

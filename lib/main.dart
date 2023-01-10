@@ -15,19 +15,23 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
         designSize: const Size(390, 844),
-        builder: (ctx, _) => MaterialApp(
-              debugShowCheckedModeBanner: false,
-              home: BlocProvider(
-                create: (context) => SeatFinderCubit(),
-                child: BlocBuilder<SeatFinderCubit, SeatFinderState>(
-                  buildWhen: (context,state){
-                    return state is SeatFinderInitial;
-                  },
-                  builder: (ctx, state) {
-                    return MyHomePage(title: "Seat Finder");
-                  },
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (ctx, _) => SafeArea(
+          child: MaterialApp(
+                debugShowCheckedModeBanner: false,
+                home: BlocProvider(
+                  create: (context) => SeatFinderCubit(),
+                  child: BlocBuilder<SeatFinderCubit, SeatFinderState>(
+                    buildWhen: (context,state){
+                      return state is SeatFinderInitial;
+                    },
+                    builder: (ctx, state) {
+                      return MyHomePage(title: "Seat Finder");
+                    },
+                  ),
                 ),
               ),
-            ));
+        ));
   }
 }
